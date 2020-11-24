@@ -12,25 +12,17 @@ public class Window {
     @Column(nullable = false)// (4)
     private String name;
 
-    @Column(nullable = false)// (5)
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private WindowStatus windowStatus;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Room room;
 
     public Window() {
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Window(String name, WindowStatus status, Room room) {
+    public Window(Room room, String name, WindowStatus status) {
         this.windowStatus = status;
         this.name = name;
         this.room = room;
@@ -58,5 +50,9 @@ public class Window {
 
     public void setWindowStatus(WindowStatus windowStatus) {
         this.windowStatus = windowStatus;
+    }
+
+    public Room getRoom() {
+        return room;
     }
 }

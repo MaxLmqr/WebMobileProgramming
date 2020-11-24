@@ -1,45 +1,27 @@
-package com.emse.spring.faircorp.model;
+package com.emse.spring.faircorp.api;
 
-import javax.persistence.*;
-import java.util.List;
+import com.emse.spring.faircorp.model.HeaterStatus;
+import com.emse.spring.faircorp.model.Room;
 
-@Entity
-@Table(name = "ROOM")
-public class Room {
-    @Id
-    @GeneratedValue
+public class RoomDto {
     private Long id;
-
-    @Column(nullable = false)// (4)
     private Integer floor;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column
     private Double current_temperature;
-
-    @Column
     private Double target_temperature;
 
-    @OneToMany(mappedBy = "room")
-    private List<Heater> heaters;
 
-    @OneToMany(mappedBy = "room")
-    private List<Window> windows;
+    public RoomDto() {
 
-    public Room() {
     }
 
-    public Room(int floor, String name, Double current_temperature, Double target_temperature, List<Heater> heaters, List<Window> windows) {
-        this.floor = floor;
-        this.name = name;
-        this.current_temperature = current_temperature;
-        this.target_temperature = target_temperature;
-        this.heaters = heaters;
-        this.windows = windows;
+    public RoomDto(Room room) {
+        this.id = room.getId();
+        this.floor = room.getFloor();
+        this.name = room.getName();
+        this.current_temperature = room.getCurrent_temperature();
+        this.target_temperature = room.getTarget_temperature();
     }
-
 
     public Long getId() {
         return id;
