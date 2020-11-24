@@ -1,6 +1,5 @@
 package com.emse.spring.faircorp.api;
 
-import com.emse.spring.faircorp.model.HeaterStatus;
 import com.emse.spring.faircorp.model.Room;
 
 public class RoomDto {

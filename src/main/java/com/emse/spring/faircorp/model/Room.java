@@ -31,13 +31,11 @@ public class Room {
     public Room() {
     }
 
-    public Room(int floor, String name, Double current_temperature, Double target_temperature, List<Heater> heaters, List<Window> windows) {
+    public Room(int floor, String name, Double current_temperature, Double target_temperature) {
         this.floor = floor;
         this.name = name;
         this.current_temperature = current_temperature;
         this.target_temperature = target_temperature;
-        this.heaters = heaters;
-        this.windows = windows;
     }
 
 
@@ -79,5 +77,21 @@ public class Room {
 
     public void setTarget_temperature(Double target_temperature) {
         this.target_temperature = target_temperature;
+    }
+
+    public List<Heater> getHeaters() {
+        return heaters;
+    }
+
+    public void setHeaters(List<Heater> heaters) {
+        this.heaters = heaters;
+    }
+
+    public List<Window> getWindows() {
+        return windows;
+    }
+
+    public void setWindows(List<Window> windows) {
+        this.windows = windows;
     }
 }

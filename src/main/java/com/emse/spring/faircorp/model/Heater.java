@@ -51,7 +51,7 @@ public class Heater {
         this.name = name;
     }
 
-    public long getPower() {
+    public Long getPower() {
         return power;
     }
 
