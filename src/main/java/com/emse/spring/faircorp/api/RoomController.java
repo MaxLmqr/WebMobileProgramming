@@ -1,6 +1,7 @@
 package com.emse.spring.faircorp.api;
 
 
+import com.emse.spring.faircorp.dao.BuildingDao;
 import com.emse.spring.faircorp.dao.HeaterDao;
 import com.emse.spring.faircorp.dao.RoomDao;
 import com.emse.spring.faircorp.dao.WindowDao;
@@ -19,11 +20,13 @@ public class RoomController {
     private final RoomDao roomDao;
     private final HeaterDao heaterDao;
     private final WindowDao windowDao;
+    private final BuildingDao buildingDao;
 
-    public RoomController(RoomDao roomDao, HeaterDao heaterDao, WindowDao windowDao) {
+    public RoomController(RoomDao roomDao, HeaterDao heaterDao, WindowDao windowDao, BuildingDao buildingDao) {
         this.roomDao = roomDao;
         this.heaterDao = heaterDao;
         this.windowDao = windowDao;
+        this.buildingDao = buildingDao;
     }
 
     @GetMapping
@@ -33,9 +36,10 @@ public class RoomController {
 
     @PostMapping
     public RoomDto create(@RequestBody RoomDto dto) {
+        Building building = buildingDao.getOne(dto.getBuildingId());
         Room room = null;
         if (dto.getId()==null) {
-            room = new Room(dto.getFloor(),dto.getName(),dto.getCurrent_temperature(),dto.getTarget_temperature());
+            room = new Room(dto.getFloor(),dto.getName(),dto.getCurrent_temperature(),dto.getTarget_temperature(), building);
             roomDao.save(room);
         }
         else {

@@ -1,7 +1,5 @@
 package com.emse.spring.faircorp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 
@@ -15,8 +13,9 @@ public class Heater {
     @Column(nullable = false)// (4)
     private String name;
 
-    @Enumerated(EnumType.STRING)
+
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private HeaterStatus heaterStatus;
 
     @Column

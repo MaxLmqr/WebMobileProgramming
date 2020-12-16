@@ -1,7 +1,6 @@
 package com.emse.spring.faircorp.dao;
 
 import com.emse.spring.faircorp.model.Heater;
-import com.emse.spring.faircorp.model.Window;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

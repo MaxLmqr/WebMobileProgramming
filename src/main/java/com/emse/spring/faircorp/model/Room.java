@@ -28,14 +28,18 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Window> windows;
 
+    @ManyToOne(optional = false)
+    private Building building;
+
     public Room() {
     }
 
-    public Room(int floor, String name, Double current_temperature, Double target_temperature) {
+    public Room(int floor, String name, Double current_temperature, Double target_temperature, Building building) {
         this.floor = floor;
         this.name = name;
         this.current_temperature = current_temperature;
         this.target_temperature = target_temperature;
+        this.building = building;
     }
 
 
@@ -94,4 +98,8 @@ public class Room {
     public void setWindows(List<Window> windows) {
         this.windows = windows;
     }
+
+    public Building getBuilding() { return building; }
+
+    public void setBuilding(Building building) { this.building=building; }
 }
