@@ -33,4 +33,5 @@ public class WindowDaoCustomImpl implements WindowDaoCustom {
             .setParameter("id", id)
             .executeUpdate();
     }
+
 }

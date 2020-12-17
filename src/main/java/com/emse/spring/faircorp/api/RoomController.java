@@ -72,4 +72,16 @@ public class RoomController {
         heaters.stream().forEach(heater -> heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF: HeaterStatus.ON));
     }
 
+    @GetMapping(path="/{id}/heaters")
+    public List<HeaterDto> findAllHeaters(@PathVariable Long id) {
+        List<Heater> heaters = roomDao.findRoomHeaters(id);
+        return heaters.stream().map(HeaterDto::new).collect(Collectors.toList());
+    }
+
+    @GetMapping(path="/{id}/windows")
+    public List<WindowDto> findAllWindows(@PathVariable Long id) {
+        List<Window> windows = roomDao.findRoomWindows(id);
+        return windows.stream().map(WindowDto::new).collect(Collectors.toList());
+    }
+
 }
