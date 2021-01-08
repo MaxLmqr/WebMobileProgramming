@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin
 @RestController // (1)
 @RequestMapping("/api/rooms") // (2)
 @Transactional // (3)
